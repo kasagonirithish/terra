@@ -1,0 +1,6 @@
+region            = "ap-south-2"
+vpc-cidr          = "14.0.0.0/16"
+subnet-cidr       = "14.0.1.0/24"
+availability-zone = "ap-south-2a"
+instance-type     = "t3.micro"
+ami-id            = "ami-0f38c47515f91ab29"
