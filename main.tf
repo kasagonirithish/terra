@@ -11,21 +11,20 @@ resource "aws_subnet" "public" {
   cidr_block              = var.subnet-cidr
   map_public_ip_on_launch = "true"
   tags = {
-    Name = "vpc-kr"
+    Name = "Public-Subnet"
   }
 }
 
 
 resource "aws_subnet" "private" {
-   availability_zone = var.availability_zone
-   vpc_id = aws_vpc.myvpc.id
-   cidr_block = var.sub
+  availability_zone = var.availability_zone
+  vpc_id            = aws_vpc.myvpc.id
+  cidr_block        = var.subnet-cidr-2
+  map_public_ip_on_launch = "true"
+  tags = {
+    Name = "Private-Subnet"
+  }
 }
-
-
-
-
-
 
 
 resource "aws_route_table" "Rt-Pub" {
