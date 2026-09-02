@@ -13,6 +13,14 @@ variable "subnet-cidr" {
   type        = string
 }
 
+
+variable "subnet-cidr-2" {
+  description = " it is cidr block for private"
+  type        = string
+}
+
+
+
 variable "availability-zone" {
   description = " it is availability zone "
   type        = string
