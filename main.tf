@@ -89,16 +89,22 @@ resource "aws_security_group" "allow_tls" {
 }
 
 
+resource "aws_key_pair" "terraform" {
+  key_name   = "rithish-terraform-key"
+  public_key = file("C:/Users/ADMIN/.ssh/rithish.pub")
+}
+
 resource "aws_instance" "rithish-Public-server" {
   ami           = var.ami-id
   instance_type = var.instance-type
-  subnet_id     = aws_subnet.public.id
-  vpc_security_group_ids = [
-    aws_security_group.allow_tls.id
-  ]
+
+  subnet_id                   = aws_subnet.public.id
   associate_public_ip_address = true
+  vpc_security_group_ids      = [aws_security_group.allow_tls.id]
+
+  key_name = aws_key_pair.terraform.key_name
 
   tags = {
-    Name = "Public-Server"
+    Name = "Rithish-Public-Server"
   }
 }
