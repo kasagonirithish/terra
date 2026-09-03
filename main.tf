@@ -47,3 +47,12 @@ resource "aws_route_table" "Rt-Pri" {
     Name = "myrt-pri"
   }
 }
+
+
+resource "aws_route" "internet-attaching" {
+  route_table_id         = aws_route_table.Rt-Pub.id
+  destination_cidr_block = "0.0.0.0/0"
+  gateway_id             = aws_internet_gateway.myigw.id
+}
+
+
